@@ -39,11 +39,11 @@ export default function Home() {
         </button>
       </div>
       {/** Section 2 - details of expertise */}
-      <div className="relative min-w-full min-h-screen flex flex-col justify-center items-center bg-black border-t p-4 md:p-8">
+      {/* <div className="relative min-w-full min-h-screen flex flex-col justify-center items-center bg-black border-t p-4 md:p-8">
         <div className="text-white text-xl font-urbanist font-semibold">
           We are a bunch of crypto degens bringing order to the chaos.
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
