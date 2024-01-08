@@ -31,9 +31,9 @@ export default function Home() {
           onClick={handleContactClick}
         >
           {/* <button className="z-10 text-base md:text-lg lg:text-xl text-black font-bold mt-8 md:mt-16 lg:mt-32"> */}
-          <div className="absolute inset-x-0 h-full -bottom-2 bg-gray-200 rounded-2xl"></div>
+          <div className="absolute inset-x-0 h-full -bottom-1 bg-gray-200 rounded-2xl"></div>
 
-          <div className="relative bg-gray-100 border border-gray-100 rounded-2xl py-2 px-10 sm:py-3 sm:px-20 md:py-3 md:px-20 lg:py-3 lg:px-20 transition transform duration-200 hover:translate-y-1 active:translate-y-2">
+          <div className="relative bg-gray-100 border border-gray-100 rounded-2xl py-2 px-10 sm:py-3 sm:px-20 md:py-3 md:px-20 lg:py-3 lg:px-20 transition transform duration-200 active:translate-y-1">
             contact us
           </div>
         </button>
