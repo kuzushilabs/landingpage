@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const handleContactClick = () => {
-    window.open('https://calendly.com/saxenasahab/between-two-ferns', '_blank');
+    window.open('https://calendly.com/hello-kuzushilabs/30min', '_blank');
   };
 
   return (
