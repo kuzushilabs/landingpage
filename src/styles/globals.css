@@ -1,13 +1,11 @@
 /* Add this line to your styles/global.css */
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    background-color: #000; /* Set this to the specific black you're using */
-  }
-
-  
+  background-color: #0a0a0a; /* Set this to the specific black you're using */
+}

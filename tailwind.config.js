@@ -10,8 +10,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '390px',
+      },
       fontFamily: {
         urbanist: ['Urbanist', 'sans-serif'],
+        instrumentSerif: ['Instrument', 'serif'],
+      },
+      colors: {
+        primaryPurple: '#7941D1',
+        primaryDarkPurple: '#6938B9',
+      },
+      borderColor: {
+        primaryPurple: '#7941D1',
+        primaryDarkPurple: '#6938B9',
       },
     },
   },
