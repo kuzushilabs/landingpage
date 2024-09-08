@@ -7,7 +7,6 @@ import Lottie from 'lottie-react';
 import RocketLogo from '../../public/assets/logo.json';
 const inter = Inter({ subsets: ['latin'] });
 import { useEffect, useRef, useState } from 'react';
-import { set } from '@project-serum/anchor/dist/cjs/utils/features';
 
 interface Card {
   title: string;
