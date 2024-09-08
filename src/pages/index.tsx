@@ -347,9 +347,9 @@ export default function Home() {
             {tabData[activeTab].map((card, index) => (
               <div
                 key={index}
-                className="card w-[250px] h-[250px] bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
+                className="card w-[350px] h-[350px] bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
               >
-                <div className={`logo w-20 h-20`}>
+                <div className={`logo w-16 h-16`}>
                   <Lottie
                     className={`w-full h-full bg-none`}
                     animationData={card.icon}
