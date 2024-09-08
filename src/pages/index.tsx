@@ -5,12 +5,26 @@ import styles from '@/styles/Home.module.css';
 import Spline from '@splinetool/react-spline';
 import Lottie from 'lottie-react';
 import RocketLogo from '../../public/assets/logo.json';
+import LLMIntegration from '../../public/assets/llm-integration.json';
+import AgentsV0 from '../../public/assets/agents-v0.json';
+import AgentsV1 from '../../public/assets/agents-v1.json';
+import AgentsV2 from '../../public/assets/agents-v2.json';
+import Insights from '../../public/assets/insights.json';
+import Frontend from '../../public/assets/frontend.json';
+import Backend from '../../public/assets/backend.json';
+import Fullstack from '../../public/assets/fullstack.json';
+import Finetuning from '../../public/assets/finetuning.json';
+import DomainSpecific from '../../public/assets/domain-specificv1.json';
+import Onpremise from '../../public/assets/onpremisev1.json';
 const inter = Inter({ subsets: ['latin'] });
 import { useEffect, useRef, useState } from 'react';
 
 interface Card {
   title: string;
   description: string;
+  icon?: any;
+  height?: string;
+  width?: string;
 }
 
 interface TabData {
@@ -19,19 +33,64 @@ interface TabData {
 
 const tabData: TabData = {
   'LLM Integrations': [
-    { title: 'Feature 1', description: 'Description for Feature 1' },
-    { title: 'Feature 2', description: 'Description for Feature 2' },
-    { title: 'Feature 3', description: 'Description for Feature 3' },
+    {
+      title: 'LLMs',
+      description:
+        'Easily plug into any platform with custom LLM integrations. Chat, image, audio or automation, we make AI fit right into your workflow',
+      icon: LLMIntegration,
+    },
+    {
+      title: 'Agents',
+      description:
+        'Automate routine tasks, workflows & decision-making. Create personalized experiences for your users',
+      icon: AgentsV2,
+    },
+    {
+      title: 'Insights',
+      description:
+        'Leverage LLMs to extract key insights from complex data. Make informed decisions faster with AI that understands and summarizes information for you',
+      icon: Insights,
+    },
   ],
   'Web App': [
-    { title: 'Web Feature 1', description: 'Description for Web Feature 1' },
-    { title: 'Web Feature 2', description: 'Description for Web Feature 2' },
-    { title: 'Web Feature 3', description: 'Description for Web Feature 3' },
+    {
+      title: 'Frontend Excellence',
+      description:
+        'Build visually stunning, lightning-fast web apps that engage users. We bring your ideas to life, seamlessly.',
+      icon: Frontend,
+    },
+    {
+      title: 'Robust Backend',
+      description:
+        'Scale effortlessly with robust, secure, & high-performance solutions. We ensure your web app is built to last',
+      icon: Backend,
+    },
+    {
+      title: 'Full Stack Agility',
+      description:
+        'Get the best of both worlds with our full-stack expertise. From concept to deployment, we handle everything',
+      icon: Fullstack,
+    },
   ],
   Finetuning: [
-    { title: 'Finetuning Feature 1', description: 'Description for Feature 1' },
-    { title: 'Finetuning Feature 2', description: 'Description for Feature 2' },
-    { title: 'Finetuning Feature 3', description: 'Description for Feature 3' },
+    {
+      title: 'Finetuned Models',
+      description:
+        'Fine-tune state-of-the-art LLMs to fit your unique business needs. Get personalized models that outperform out-of-the-box solutions',
+      icon: Finetuning,
+    },
+    {
+      title: 'Domain-Specificity',
+      description:
+        'Optimize your AI for specialized industries. Whether healthcare, finance, or e-commerce, we craft models that speak your language',
+      icon: DomainSpecific,
+    },
+    {
+      title: 'On-Premise Deployment',
+      description:
+        'Deploy LLMs on your own infrastructure. Keep your data secure and compliant, with no external dependencies',
+      icon: Onpremise,
+    },
   ],
 };
 
@@ -192,7 +251,7 @@ export default function Home() {
               stuff
             </span>
           </div>
-          <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-2 ">
+          <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-2">
             Kuzushi Labs is an AI-native product studio building fullstack
             AI/LLM apps
           </div>
@@ -223,16 +282,16 @@ export default function Home() {
       {/** Section 2 - details of expertise */}
       <div
         ref={sectionRef}
-        className={`relative min-w-full min-h-screen flex flex-col justify-center items-center p-4 md:p-8 bg-[#030303] transition-all duration-700 ease-in-out ${
+        className={`relative min-w-full min-h-screen flex flex-col justify-start items-center p-8 sm:p-16 bg-[#030303] transition-all duration-700 ease-in-out ${
           isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
         }`}
       >
-        <div className="text-white text-3xl xs:text-4xl sm:text-5xl font-urbanist text-center mx-8 leading-tight">
+        <div className="text-white text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center mt-32 px-24 py-8">
           Here at Kuzushi Labs we engineer{' '}
           <span className="italic font-instrumentSerif font-thin tracking-tighter">
-            AI
+            AI native
           </span>{' '}
-          native solutions. We are committed to creating innovative{' '}
+          solutions. We are committed to creating innovative and inspiring{' '}
           <span className="italic font-instrumentSerif font-thin tracking-tighter">
             world-class
           </span>{' '}
@@ -243,29 +302,33 @@ export default function Home() {
         </div>
       </div>
       {/** Section 3 - details of services */}
-      <div className="service-container p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303]">
+      <div className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303] text-white">
         <div className="header-container w-full flex flex-col items-center justify-between gap-4">
-          <div className="text-center font-urbanist px-4">Services</div>
-          <div className="text-6xl text-center py-1">
+          <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
+            Services
+          </div>
+          <div className="text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center py-1">
             How can we help{' '}
             <span className="font-instrumentSerif italic tracking-tighter font-thin">
               you?
             </span>
           </div>
-          <div className="text-center text-[#aaaaaa] max-w-[450px]">
+          <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-2 ">
             From ideation to execution we got you covered with our wide range of
             services
           </div>
         </div>
         <div className="details-container flex flex-col justify-between items-center flex-1 gap-8">
           {/* Tabs */}
-          <div className="flex flex-row items-center justify-center">
+          <div className="flex flex-row items-center justify-center mt-16 border border-white/10 rounded-[22px]  gap-4 p-2">
             {Object.keys(tabData).map((tab) => (
               <div
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={`px-4 py-2 cursor-pointer ${
-                  activeTab === tab ? 'text-white font-bold' : 'text-[#aaaaaa]'
+                className={`px-4 py-2 cursor-pointer text-base ${
+                  activeTab === tab
+                    ? 'text-white font-bold bg-[#121212] rounded-[14px]'
+                    : 'text-[#aaaaaa]'
                 }`}
               >
                 {tab}
@@ -284,10 +347,16 @@ export default function Home() {
             {tabData[activeTab].map((card, index) => (
               <div
                 key={index}
-                className="card w-[250px] h-[250px] bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-center items-center"
+                className="card w-[250px] h-[250px] bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
               >
-                <h2 className="font-bold text-lg">{card.title}</h2>
-                <p className="text-[#aaaaaa]">{card.description}</p>
+                <div className={`logo w-20 h-20`}>
+                  <Lottie
+                    className={`w-full h-full bg-none`}
+                    animationData={card.icon}
+                  />
+                </div>
+                <h2 className="font-bold text-lg mt-4">{card.title}</h2>
+                <p className="text-[#aaaaaa] flex-1 mt-4">{card.description}</p>
               </div>
             ))}
           </div>
