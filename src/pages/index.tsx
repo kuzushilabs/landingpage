@@ -115,14 +115,14 @@ export default function Home() {
   };
 
   // Intersection Observer
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  // const sectionRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const isOutOfViewRef = useRef(true); // Ref to track 'out of view' state
   const scrollDirectionRef = useRef('down');
 
   useEffect(() => {
-    const currentSection = sectionRef.current;
+    const currentSection = aboutUsRef.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -176,6 +176,17 @@ export default function Home() {
     };
   }, [lastScrollY]);
 
+  // **Create refs for the sections**
+  const aboutUsRef = useRef<HTMLDivElement | null>(null);
+  const resultsRef = useRef<HTMLDivElement | null>(null);
+  const servicesRef = useRef<HTMLDivElement | null>(null);
+  const processRef = useRef<HTMLDivElement | null>(null);
+  const faqsRef = useRef<HTMLDivElement | null>(null);
+
+  // **Function to handle smooth scrolling to the respective section**
+  const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <>
       <div className="relative min-w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
@@ -188,11 +199,36 @@ export default function Home() {
           </div>
           {/* Desktop Menu */}
           <div className="menu hidden lg:flex flex-row items-center justify-between z-50 text-white">
-            <div className="pl-2 pr-4 py-2 cursor-pointer ">About Us</div>
-            <div className="px-4 py-2 cursor-pointer">Results</div>
-            <div className="px-4 py-2 cursor-pointer">Services</div>
-            <div className="px-4 py-2 cursor-pointer">Process</div>
-            <div className="px-4 py-2 cursor-pointer">FAQs</div>
+            <div
+              className="pl-2 pr-4 py-2 cursor-pointer"
+              onClick={() => scrollToSection(aboutUsRef)}
+            >
+              About Us
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer"
+              onClick={() => scrollToSection(resultsRef)}
+            >
+              Results
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer"
+              onClick={() => scrollToSection(servicesRef)}
+            >
+              Services
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer"
+              onClick={() => scrollToSection(processRef)}
+            >
+              Process
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer"
+              onClick={() => scrollToSection(faqsRef)}
+            >
+              FAQs
+            </div>
             <div
               className="px-6 py-2 ml-4 cursor-pointer bg-primaryPurple rounded-lg text-center hover:bg-[#8a5ae6]"
               onClick={() => {
@@ -226,11 +262,36 @@ export default function Home() {
           </button>
           {isOpen && (
             <div className="lg:hidden flex flex-col items-center bg-[#0a0a0a] text-white absolute top-full z-1000 right-0 min-w-40 pb-4">
-              <div className="px-4 py-2 cursor-pointer">About Us</div>
-              <div className="px-4 py-2 cursor-pointer">Results</div>
-              <div className="px-4 py-2 cursor-pointer">Services</div>
-              <div className="px-4 py-2 cursor-pointer">Process</div>
-              <div className="px-4 py-2 cursor-pointer">FAQs</div>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={() => scrollToSection(aboutUsRef)}
+              >
+                About Us
+              </div>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={() => scrollToSection(resultsRef)}
+              >
+                Results
+              </div>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={() => scrollToSection(servicesRef)}
+              >
+                Services
+              </div>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={() => scrollToSection(processRef)}
+              >
+                Process
+              </div>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={() => scrollToSection(faqsRef)}
+              >
+                FAQs
+              </div>
               <div className="px-6 py-2 mt-4 mx-2 cursor-pointer bg-primaryPurple rounded-lg text-center hover:bg-[#8a5ae6]">
                 Email Us
               </div>
@@ -281,7 +342,7 @@ export default function Home() {
       </div>
       {/** Section 2 - details of expertise */}
       <div
-        ref={sectionRef}
+        ref={aboutUsRef}
         className={`relative min-w-full min-h-screen flex flex-col justify-start items-center p-8 sm:p-16 bg-[#030303] transition-all duration-700 ease-in-out ${
           isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
         }`}
@@ -302,7 +363,10 @@ export default function Home() {
         </div>
       </div>
       {/** Section 3 - details of services */}
-      <div className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-yellow-300 text-white">
+      <div
+        ref={servicesRef}
+        className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303] text-white"
+      >
         <div className="header-container w-full flex flex-col items-center justify-between gap-4">
           <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
             Services
@@ -318,14 +382,14 @@ export default function Home() {
             services
           </div>
         </div>
-        <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8 bg-green-300">
+        <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8 ">
           {/* Tabs */}
-          <div className="flex flex-row items-center justify-center mt-16 border border-white/10 rounded-[22px] gap-2 sm:gap-4 p-2 bg-blue-300">
+          <div className="flex flex-row items-center justify-center mt-16 border border-white/10 rounded-[22px] gap-2 sm:gap-4 p-2">
             {Object.keys(tabData).map((tab) => (
               <div
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={`bg-red-300 px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${
+                className={` px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${
                   activeTab === tab
                     ? 'text-white font-bold bg-[#121212] rounded-[14px]'
                     : 'text-[#aaaaaa]'
@@ -347,7 +411,7 @@ export default function Home() {
             {tabData[activeTab].map((card, index) => (
               <div
                 key={index}
-                className="card max-w-xs bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
+                className="card max-w-xs  bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
               >
                 <div className={`logo w-16 h-16`}>
                   <Lottie
