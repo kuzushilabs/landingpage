@@ -148,7 +148,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.8 } // 60% of the section must be visible to trigger
+      { threshold: 0.5 } // 60% of the section must be visible to trigger
     );
 
     if (currentSection) {
@@ -286,7 +286,7 @@ export default function Home() {
           isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
         }`}
       >
-        <div className="text-white text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center mt-32 px-24 py-8">
+        <div className="text-white text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center mt-32 px-4 md:px-24 py-8">
           Here at Kuzushi Labs we engineer{' '}
           <span className="italic font-instrumentSerif font-thin tracking-tighter">
             AI native
@@ -302,7 +302,7 @@ export default function Home() {
         </div>
       </div>
       {/** Section 3 - details of services */}
-      <div className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303] text-white">
+      <div className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-yellow-300 text-white">
         <div className="header-container w-full flex flex-col items-center justify-between gap-4">
           <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
             Services
@@ -318,14 +318,14 @@ export default function Home() {
             services
           </div>
         </div>
-        <div className="details-container flex flex-col justify-between items-center flex-1 gap-8">
+        <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8 bg-green-300">
           {/* Tabs */}
-          <div className="flex flex-row items-center justify-center mt-16 border border-white/10 rounded-[22px]  gap-4 p-2">
+          <div className="flex flex-row items-center justify-center mt-16 border border-white/10 rounded-[22px] gap-2 sm:gap-4 p-2 bg-blue-300">
             {Object.keys(tabData).map((tab) => (
               <div
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={`px-4 py-2 cursor-pointer text-base ${
+                className={`bg-red-300 px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${
                   activeTab === tab
                     ? 'text-white font-bold bg-[#121212] rounded-[14px]'
                     : 'text-[#aaaaaa]'
@@ -347,7 +347,7 @@ export default function Home() {
             {tabData[activeTab].map((card, index) => (
               <div
                 key={index}
-                className="card w-[350px] h-[350px] bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
+                className="card max-w-xs bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
               >
                 <div className={`logo w-16 h-16`}>
                   <Lottie
@@ -356,7 +356,9 @@ export default function Home() {
                   />
                 </div>
                 <h2 className="font-bold text-lg mt-4">{card.title}</h2>
-                <p className="text-[#aaaaaa] flex-1 mt-4">{card.description}</p>
+                <p className="text-[#aaaaaa] text-sm sm:text-base flex-1 mt-4">
+                  {card.description}
+                </p>
               </div>
             ))}
           </div>
