@@ -589,10 +589,10 @@ export default function Home() {
               type="single"
               collapsible
               className="w-full font-urbanist px-4 my-4"
+              key={index}
             >
               <AccordionItem
                 value={item.question}
-                key={index}
                 className="border-b-white/10"
               >
                 <AccordionTrigger className="text:xl sm:text-2xl no-underline hover:no-underline hover:opacity-80 text-start">
