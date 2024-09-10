@@ -21,6 +21,12 @@ import Develop from '../../public/assets/develop.json';
 import Launch from '../../public/assets/launch.json';
 const inter = Inter({ subsets: ['latin'] });
 import { useEffect, useRef, useState } from 'react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 interface Card {
   title: string;
@@ -118,6 +124,34 @@ const processData: Card[] = [
   },
 ];
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqData: FAQItem[] = [
+  {
+    question: 'What all services does Kuzushi Labs offer?',
+    answer:
+      'We offer a wide range of services. In design, we specialize in product design and landing page design. On the development side, we provide multiple LLM integrations,cross-platform apps (web & mobile) and finetuning infrastructure',
+  },
+  {
+    question: 'How long does a typical software development project take?',
+    answer:
+      'The duration of a typical software development project depends on its scope, complexity, and the specific requirements. On average, it can range from a few weeks to several months.',
+  },
+  {
+    question: 'What does the broader process look like?',
+    answer:
+      'We start with brainstorming call, create wireframes and UI designs and proceed with development of the entire stack. We work closely with you with regular updates and feedback sessions.',
+  },
+  {
+    question:
+      'What kind of quality assurance do we have? Do we offer maintenance?',
+    answer: `We don't mess around with quality. We've got a solid mix of automated tests and real people keeping an eye on things. Everyone on the team checks each other's work, and we're always playing with the coolest new tech tools. Basically, we make sure your stuff works great and gets out the door fast. After we launch, we've got your back too. Need some extra help or tweaks? No problem. We can stick around and keep things running smooth for a small monthly fee. It's all about what your product needs - we're flexible like that.`,
+  },
+];
+
 export default function Home() {
   const handleContactClick = () => {
     window.open('https://calendly.com/kuzushilabs/30min', '_blank');
@@ -211,6 +245,35 @@ export default function Home() {
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    if (openIndex === index) {
+      setOpenIndex(null); // Close the currently open FAQ
+    } else {
+      setOpenIndex(index); // Open the clicked FAQ
+    }
+  };
+
+  // Close card when clicking outside the card
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setOpenIndex(null); // Close any open card if clicked outside
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <div className="relative min-w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
@@ -502,6 +565,40 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/** Section 5 - details of faqs */}
+      <div
+        ref={faqsRef}
+        className="faq-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-center items-center font-urbanist gap-8 bg-[#030303] text-white"
+      >
+        <div className="header-container w-full flex flex-col items-center justify-between gap-4">
+          <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
+            FAQs
+          </div>
+        </div>
+        <div className="w-[600px] gap-4">
+          {faqData.map((item, index) => (
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full font-urbanist px-4 my-4"
+            >
+              <AccordionItem
+                value={item.question}
+                key={index}
+                className="border-b-white/10"
+              >
+                <AccordionTrigger className="text:xl sm:text-2xl no-underline hover:no-underline hover:opacity-80">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text:md sm:text-base">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))}
         </div>
       </div>
     </>
