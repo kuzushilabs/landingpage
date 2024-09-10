@@ -319,10 +319,10 @@ export default function Home() {
             <div
               className="px-6 py-2 ml-4 cursor-pointer bg-primaryPurple rounded-lg text-center hover:bg-[#8a5ae6]"
               onClick={() => {
-                console.log('email us');
+                window.open('https://t.me/ArunankSharan', '_blank');
               }}
             >
-              Email Us
+              Contact Us
             </div>
           </div>
           {/* Mobile Menu (toggle) */}
@@ -379,8 +379,13 @@ export default function Home() {
               >
                 FAQs
               </div>
-              <div className="px-6 py-2 mt-4 mx-2 cursor-pointer bg-primaryPurple rounded-lg text-center hover:bg-[#8a5ae6]">
-                Email Us
+              <div
+                className="px-6 py-2 ml-4 cursor-pointer bg-primaryPurple rounded-lg text-center hover:bg-[#8a5ae6]"
+                onClick={() => {
+                  window.open('https://t.me/ArunankSharan', '_blank');
+                }}
+              >
+                Contact Us
               </div>
             </div>
           )}
