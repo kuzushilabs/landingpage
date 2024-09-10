@@ -16,6 +16,9 @@ import Fullstack from '../../public/assets/fullstack.json';
 import Finetuning from '../../public/assets/finetuning.json';
 import DomainSpecific from '../../public/assets/domain-specificv1.json';
 import Onpremise from '../../public/assets/onpremisev1.json';
+import Ideation from '../../public/assets/ideation.json';
+import Develop from '../../public/assets/develop.json';
+import Launch from '../../public/assets/launch.json';
 const inter = Inter({ subsets: ['latin'] });
 import { useEffect, useRef, useState } from 'react';
 
@@ -93,6 +96,27 @@ const tabData: TabData = {
     },
   ],
 };
+
+const processData: Card[] = [
+  {
+    title: 'Ideation',
+    description:
+      'We’ll get on a call to ideate with you & understand your vision and goals',
+    icon: Ideation,
+  },
+  {
+    title: 'Development',
+    description:
+      "With your business goals in mind, we'll design & develop the product",
+    icon: Develop,
+  },
+  {
+    title: 'Launch',
+    description:
+      'We will launch the product & continue to support you with updates & more',
+    icon: Launch,
+  },
+];
 
 export default function Home() {
   const handleContactClick = () => {
@@ -205,12 +229,12 @@ export default function Home() {
             >
               About Us
             </div>
-            <div
+            {/* <div
               className="px-4 py-2 cursor-pointer"
               onClick={() => scrollToSection(resultsRef)}
             >
               Results
-            </div>
+            </div> */}
             <div
               className="px-4 py-2 cursor-pointer"
               onClick={() => scrollToSection(servicesRef)}
@@ -378,8 +402,8 @@ export default function Home() {
             </span>
           </div>
           <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-2 ">
-            From ideation to execution we got you covered with our wide range of
-            services
+            Integrations. Web apps. Finetuning. We got you covered with our wide
+            range of services
           </div>
         </div>
         <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8 ">
@@ -411,7 +435,59 @@ export default function Home() {
             {tabData[activeTab].map((card, index) => (
               <div
                 key={index}
-                className="card max-w-xs  bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4"
+                className="card max-w-xs min-h-[220px]  bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4 text-center"
+              >
+                <div className={`logo w-16 h-16`}>
+                  <Lottie
+                    className={`w-full h-full bg-none`}
+                    animationData={card.icon}
+                  />
+                </div>
+                <h2 className="font-bold text-lg mt-4">{card.title}</h2>
+                <p className="text-[#aaaaaa] text-sm sm:text-base flex-1 mt-4">
+                  {card.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/** Section 4 - details of process */}
+      <div
+        ref={processRef}
+        className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303] text-white"
+      >
+        <div className="header-container w-full flex flex-col items-center justify-between gap-4">
+          <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
+            Process
+          </div>
+          <div className="text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center py-1 max-w-2xl">
+            Our easy 3-step method to{' '}
+            <span className="font-instrumentSerif italic tracking-tighter font-thin">
+              accelerate
+            </span>{' '}
+            your roadmap
+          </div>
+          <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-2 ">
+            From ideation to execution, we work closely with you every step of
+            the way
+          </div>
+        </div>
+        <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8 ">
+          {/* Tabs */}
+
+          {/* Cards with animation */}
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${
+              animate
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
+          >
+            {processData.map((card, index) => (
+              <div
+                key={index}
+                className="card max-w-xs min-h-[220px]  bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4 text-center"
               >
                 <div className={`logo w-16 h-16`}>
                   <Lottie
