@@ -583,7 +583,7 @@ export default function Home() {
             FAQs
           </div>
         </div>
-        <div className="max-w-5xl gap-4">
+        <div className="max-w-3xl">
           {faqData.map((item, index) => (
             <Accordion
               type="single"
@@ -593,12 +593,12 @@ export default function Home() {
             >
               <AccordionItem
                 value={item.question}
-                className="border-b-white/10"
+                className="border-b-white/10 w-full"
               >
-                <AccordionTrigger className="text:xl sm:text-2xl no-underline hover:no-underline hover:opacity-80 text-start">
+                <AccordionTrigger className="text:xl sm:text-2xl no-underline hover:no-underline hover:opacity-80 text-start w-full">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text:md sm:text-base">
+                <AccordionContent className="text:md sm:text-base w-full">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
