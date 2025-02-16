@@ -27,6 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useRouter } from 'next/navigation';
 
 interface Card {
   title: string;
@@ -124,6 +125,75 @@ const processData: Card[] = [
   },
 ];
 
+const designPartnerData: Card[] = [
+  {
+    title: 'Branding',
+    description: 'Brand refresh. primary and secondary research',
+    icon: Ideation,
+  },
+  {
+    title: 'UX Design',
+    description: 'Intuitive user journeys.',
+    icon: Develop,
+  },
+  {
+    title: 'UI Design',
+    description: 'Aesthetically pleasing, functionally simple',
+    icon: Launch,
+  },
+];
+
+const designPartnerClientLogos = [
+  {
+    title: 'Adani',
+    logo_url: '/images/adani.png',
+    height: 75,
+    width: 75,
+  },
+  {
+    title: 'PhonePe',
+    logo_url: '/images/phonepe.png',
+    height: 100,
+    width: 100,
+  },
+  {
+    title: 'Manipal',
+    logo_url: '/images/manipal.png',
+    height: 150,
+    width: 150,
+  },
+  {
+    title: 'Housing',
+    logo_url: '/images/housing.png',
+    height: 150,
+    width: 150,
+  },
+  {
+    title: 'Magenta',
+    logo_url: '/images/magenta.png',
+    height: 100,
+    width: 100,
+  },
+  {
+    title: 'Klub',
+    logo_url: '/images/klub.png',
+    height: 50,
+    width: 50,
+  },
+  {
+    title: 'IndusInd',
+    logo_url: '/images/indusind.png',
+    height: 150,
+    width: 150,
+  },
+  {
+    title: 'Teerth',
+    logo_url: '/images/teerth.png',
+    height: 50,
+    width: 75,
+  },
+];
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -171,6 +241,8 @@ export default function Home() {
       setAnimate(false); // Stop the animation after the transition
     }, 300); // Match the timeout with the duration of animation
   };
+
+  const router = useRouter();
 
   // Intersection Observer
   // const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -239,11 +311,16 @@ export default function Home() {
   const resultsRef = useRef<HTMLDivElement | null>(null);
   const servicesRef = useRef<HTMLDivElement | null>(null);
   const processRef = useRef<HTMLDivElement | null>(null);
+  const designPartnerRef = useRef<HTMLDivElement | null>(null);
   const faqsRef = useRef<HTMLDivElement | null>(null);
 
   // **Function to handle smooth scrolling to the respective section**
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const navigateToBlog = () => {
+    router.push('/blog');
   };
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -277,7 +354,7 @@ export default function Home() {
   return (
     <>
       <div className="relative min-w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-        <div className="fixed top-8 border border-white/10 rounded-lg flex flex-row items-center justify-between bg-[#0D0D0D]/50 pr-4 px-2  z-[1000] font-urbanist w-full lg:w-[625px]">
+        <div className="fixed top-8 border border-white/10 rounded-lg flex flex-row items-center justify-between bg-[#0D0D0D]/50 pr-4 px-2  z-[1000] font-urbanist w-full lg:w-[720px]">
           <div className="logo w-[48px] h-[64px] mr-1">
             <Lottie
               className="h-full w-full bg-none"
@@ -309,6 +386,15 @@ export default function Home() {
               onClick={() => scrollToSection(processRef)}
             >
               Process
+            </div>
+            <div
+              className="px-4 py-2 cursor-pointer"
+              onClick={() => scrollToSection(designPartnerRef)}
+            >
+              Partners
+            </div>
+            <div className="px-4 py-2 cursor-pointer" onClick={navigateToBlog}>
+              Blog
             </div>
             <div
               className="px-4 py-2 cursor-pointer"
@@ -372,6 +458,12 @@ export default function Home() {
                 onClick={() => scrollToSection(processRef)}
               >
                 Process
+              </div>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={() => scrollToSection(designPartnerRef)}
+              >
+                Partners
               </div>
               <div
                 className="px-4 py-2 cursor-pointer"
@@ -474,7 +566,7 @@ export default function Home() {
             range of services
           </div>
         </div>
-        <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8 ">
+        <div className="details-container flex flex-col justify-between items-center md:flex-1 gap-8">
           {/* Tabs */}
           <div className="flex flex-row items-center justify-center mt-16 border border-white/10 rounded-[22px] gap-2 sm:gap-4 p-2">
             {Object.keys(tabData).map((tab) => (
@@ -569,6 +661,82 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/** Section 5 - partners */}
+      <div
+        ref={designPartnerRef}
+        className="service-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303] text-white"
+      >
+        <div className="header-container w-full flex flex-col items-center justify-between gap-4 mb-8">
+          <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
+            Partner
+          </div>
+          <div className="text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center py-1 max-w-2xl">
+            Our Design Partner
+            {/* Our Design Partners help you with {' '}
+            <span className="font-instrumentSerif italic tracking-tighter font-thin">
+              world-class
+            </span>{' '}
+            UI/UX */}
+          </div>
+          <div>
+            <div
+              className="flex flex-row cursor-pointer"
+              onClick={() => window.open('https://thedesigntrip.com', '_blank')}
+            >
+              <Image
+                src={'/images/TheDesignTrip_Logo.png'}
+                alt="Design Partner"
+                width={150}
+                height={150}
+              />
+            </div>
+          </div>
+          <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-4 ">
+            We express your idea into world-class UI/UX designs
+          </div>
+        </div>
+        <div className="details-container flex flex-col justify-between items-center sm:flex-1 gap-8 ">
+          {/* Tabs */}
+
+          {/* Cards with animation - Todo: Will be replaced by logo and The Design Trip */}
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-24 gap-y-12 transform transition-all duration-500 ${
+              animate
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
+          >
+            {designPartnerClientLogos.map((logo, index) => (
+              <div key={index}>
+                <Image
+                  src={logo.logo_url}
+                  alt={logo.title}
+                  width={logo.width}
+                  height={logo.height}
+                />
+              </div>
+            ))}
+            {/* {designPartnerData.map((card, index) => (
+              <div
+                key={index}
+                className="card max-w-xs min-h-[220px]  bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4 text-center"
+              >
+                <div className={`logo w-16 h-16`}>
+                  <Lottie
+                    className={`w-full h-full bg-none`}
+                    animationData={card.icon}
+                  />
+                </div>
+                <h2 className="font-bold text-lg mt-4">{card.title}</h2>
+                <p className="text-[#aaaaaa] text-sm sm:text-base flex-1 mt-4">
+                  {card.description}
+                </p>
+              </div>
+            ))} */}
           </div>
         </div>
       </div>
