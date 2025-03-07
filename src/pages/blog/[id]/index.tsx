@@ -189,7 +189,7 @@ const BlogDetails = () => {
 
         <div className="flex flex-col items-center justify-between my-12">
           <div
-            className={`prose lg:prose-xl dark:prose-invert prose-h3:text-white max-w-7xl mx-16 
+            className={`prose prose-h1:text-white prose-h2:text-white prose-h3:text-white prose-h4:text-white prose-h5:text-white prose-h6:text-white lg:prose-xl dark:prose-invert  max-w-7xl mx-16 
             prose-a:text-white
             prose-strong:text-white
             prose-p:text-white prose-bold:text-white prose-li:marker:text-white
