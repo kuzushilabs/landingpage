@@ -15,9 +15,18 @@ import { useRouter } from 'next/navigation';
 const Blog = () => {
   const router = useRouter();
 
-  const handleBlogClick = (index: number) => {
-    console.log('Blog clicked:', index);
-    router.push(`/blog/${index}`);
+  const toUrlSafeTitle = (title: string): string => {
+    return title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .trim();
+  };
+
+  const handleBlogClick = (blog: any) => {
+    const urlSafeTitle = toUrlSafeTitle(blog.title);
+    console.log('Blog clicked:', urlSafeTitle);
+    router.push(`/blog/${urlSafeTitle}`);
   };
 
   return (
@@ -33,7 +42,7 @@ const Blog = () => {
             <Card
               key={index}
               className="max-w-md m-8 bg-[#121212] border-0 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-all duration-300 flex flex-col h-full"
-              onClick={() => handleBlogClick(index)}
+              onClick={() => handleBlogClick(blog)}
             >
               <div className="flex flex-col h-full">
                 <div className="w-full h-[200px] relative">

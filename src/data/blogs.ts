@@ -64,7 +64,7 @@ At Kuzushi Labs, we continue to innovate in AI-native applications to drive valu
   },
   {
     title:
-      'From RNNs to Self-Attention - Understanding Q, K, and V in Transformers',
+      'From RNNs to Self-Attention-Understanding Q, K, and V in Transformers',
     description:
       'Transformers are a powerful class of models that have revolutionized NLP. In this blog, we will explore the concepts of Q, K, V, and how they work together to enable the attention mechanism.',
     avatar_url: 'https://github.com/shadcn.png',

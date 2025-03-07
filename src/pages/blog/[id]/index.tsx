@@ -10,14 +10,26 @@ import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 import styles from '@/styles/katex-overrides.module.css';
 
+// Helper function to convert a title to URL-safe format
+const toUrlSafeTitle = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .trim();
+};
+
 const BlogDetails = () => {
   const params = useParams();
-  const { id } = params || {};
-  if (!id) {
+  const { id: urlTitle } = params || {};
+
+  if (!urlTitle) {
     return <div>Loading...</div>;
   }
 
-  const blog = blogs[Number(id)];
+  // Find the blog by matching the URL-safe title
+  const blog = blogs.find((blog) => toUrlSafeTitle(blog.title) === urlTitle);
+
   if (!blog) {
     return <div>Blog not found</div>;
   }
