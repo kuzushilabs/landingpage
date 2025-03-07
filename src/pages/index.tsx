@@ -441,12 +441,12 @@ export default function Home() {
               >
                 About Us
               </div>
-              <div
+              {/* <div
                 className="px-4 py-2 cursor-pointer"
                 onClick={() => scrollToSection(resultsRef)}
               >
                 Results
-              </div>
+              </div> */}
               <div
                 className="px-4 py-2 cursor-pointer"
                 onClick={() => scrollToSection(servicesRef)}
@@ -464,6 +464,9 @@ export default function Home() {
                 onClick={() => scrollToSection(designPartnerRef)}
               >
                 Partners
+              </div>
+              <div className="px-4 py-2 cursor-pointer" onClick={navigateToBlog}>
+                Blog
               </div>
               <div
                 className="px-4 py-2 cursor-pointer"
@@ -527,9 +530,8 @@ export default function Home() {
       {/** Section 2 - details of expertise */}
       <div
         ref={aboutUsRef}
-        className={`relative min-w-full min-h-screen flex flex-col justify-start items-center p-8 sm:p-16 bg-[#030303] transition-all duration-700 ease-in-out ${
-          isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
-        }`}
+        className={`relative min-w-full min-h-screen flex flex-col justify-start items-center p-8 sm:p-16 bg-[#030303] transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
+          }`}
       >
         <div className="text-white text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center mt-32 px-4 md:px-24 py-8">
           Here at Kuzushi Labs we engineer{' '}
@@ -573,11 +575,10 @@ export default function Home() {
               <div
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={` px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${
-                  activeTab === tab
-                    ? 'text-white font-bold bg-[#121212] rounded-[14px]'
-                    : 'text-[#aaaaaa]'
-                }`}
+                className={` px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${activeTab === tab
+                  ? 'text-white font-bold bg-[#121212] rounded-[14px]'
+                  : 'text-[#aaaaaa]'
+                  }`}
               >
                 {tab}
               </div>
@@ -586,11 +587,10 @@ export default function Home() {
 
           {/* Cards with animation */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${
-              animate
-                ? 'translate-y-full opacity-0'
-                : 'translate-y-0 opacity-100'
-            }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${animate
+              ? 'translate-y-full opacity-0'
+              : 'translate-y-0 opacity-100'
+              }`}
           >
             {tabData[activeTab].map((card, index) => (
               <div
@@ -638,11 +638,10 @@ export default function Home() {
 
           {/* Cards with animation */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${
-              animate
-                ? 'translate-y-full opacity-0'
-                : 'translate-y-0 opacity-100'
-            }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${animate
+              ? 'translate-y-full opacity-0'
+              : 'translate-y-0 opacity-100'
+              }`}
           >
             {processData.map((card, index) => (
               <div
@@ -704,11 +703,10 @@ export default function Home() {
 
           {/* Cards with animation - Todo: Will be replaced by logo and The Design Trip */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-24 gap-y-12 transform transition-all duration-500 ${
-              animate
-                ? 'translate-y-full opacity-0'
-                : 'translate-y-0 opacity-100'
-            }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-24 gap-y-12 transform transition-all duration-500 ${animate
+              ? 'translate-y-full opacity-0'
+              : 'translate-y-0 opacity-100'
+              }`}
           >
             {designPartnerClientLogos.map((logo, index) => (
               <div key={index}>

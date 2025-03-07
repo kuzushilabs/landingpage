@@ -32,32 +32,37 @@ const Blog = () => {
           {blogs.map((blog, index) => (
             <Card
               key={index}
-              className="max-w-md m-8 bg-[#121212] border-0 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-all duration-300"
+              className="max-w-md m-8 bg-[#121212] border-0 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-all duration-300 flex flex-col h-full"
               onClick={() => handleBlogClick(index)}
             >
-              <CardHeader>
-                <Image
-                  src={blog.image_url}
-                  alt={blog.title}
-                  width={350}
-                  height={200}
-                />
-                <CardTitle className="text-white py-4">{blog.title}</CardTitle>
-                <CardDescription className="text-[#aaaaaa]">
-                  {blog.description}
-                </CardDescription>
-              </CardHeader>
-
-              <CardFooter className="gap-4">
-                <Avatar>
-                  <AvatarImage src={blog.avatar_url} alt="@shadcn" />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col">
-                  <p className="text-white">{blog.author}</p>
-                  <p className="text-[#aaaaaa]">{blog.created_at}</p>
+              <div className="flex flex-col h-full">
+                <div className="w-full h-[200px] relative">
+                  <Image
+                    src={blog.image_url}
+                    alt={blog.title}
+                    fill
+                    className="object-cover rounded-t-lg"
+                  />
                 </div>
-              </CardFooter>
+
+                <div className="p-6 flex-grow">
+                  <h3 className="text-white text-xl font-semibold mb-2">
+                    {blog.title}
+                  </h3>
+                  <p className="text-[#aaaaaa] mb-4">{blog.description}</p>
+                </div>
+
+                <div className="px-6 pb-6 flex items-center gap-4 mt-auto">
+                  <Avatar>
+                    <AvatarImage src={blog.avatar_url} alt={blog.author} />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col">
+                    <p className="text-white">{blog.author}</p>
+                    <p className="text-[#aaaaaa]">{blog.created_at}</p>
+                  </div>
+                </div>
+              </div>
             </Card>
           ))}
         </div>
