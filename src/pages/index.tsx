@@ -143,6 +143,58 @@ const designPartnerData: Card[] = [
   },
 ];
 
+const clientLogos = [
+  {
+    title: 'Echovane',
+    logo_url: '/images/echovane.png',
+    height: 130,
+    width: 130,
+  },
+
+  {
+    title: 'Desklib',
+    logo_url: '/images/desklib.png',
+    height: 120,
+    width: 120,
+  },
+  {
+    title: 'Arrowhead',
+    logo_url: '/images/arrowhead.png',
+    height: 150,
+    width: 150,
+  },
+  {
+    title: 'ScheduleX',
+    logo_url: '/images/schedulex.png',
+    height: 140,
+    width: 140,
+  },
+  {
+    title: 'Industrycover',
+    logo_url: '/images/industrycover.png',
+    height: 100,
+    width: 100,
+  },
+  {
+    title: 'AI2Easy',
+    logo_url: '/images/ai2easy.png',
+    height: 100,
+    width: 100,
+  },
+  {
+    title: 'Mitigata',
+    logo_url: '/images/mitigata.png',
+    height: 100,
+    width: 100,
+  },
+  {
+    title: 'Mopid',
+    logo_url: '/images/mopid.png',
+    height: 100,
+    width: 100,
+  },
+];
+
 const designPartnerClientLogos = [
   {
     title: 'Adani',
@@ -465,7 +517,10 @@ export default function Home() {
               >
                 Partners
               </div>
-              <div className="px-4 py-2 cursor-pointer" onClick={navigateToBlog}>
+              <div
+                className="px-4 py-2 cursor-pointer"
+                onClick={navigateToBlog}
+              >
                 Blog
               </div>
               <div
@@ -530,8 +585,9 @@ export default function Home() {
       {/** Section 2 - details of expertise */}
       <div
         ref={aboutUsRef}
-        className={`relative min-w-full min-h-screen flex flex-col justify-start items-center p-8 sm:p-16 bg-[#030303] transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
-          }`}
+        className={`relative min-w-full min-h-screen flex flex-col justify-start items-center p-8 sm:p-16 bg-[#030303] transition-all duration-700 ease-in-out ${
+          isVisible ? 'opacity-100 blur-0' : 'opacity-100 blur-lg'
+        }`}
       >
         <div className="text-white text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center mt-32 px-4 md:px-24 py-8">
           Here at Kuzushi Labs we engineer{' '}
@@ -575,10 +631,11 @@ export default function Home() {
               <div
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={` px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${activeTab === tab
-                  ? 'text-white font-bold bg-[#121212] rounded-[14px]'
-                  : 'text-[#aaaaaa]'
-                  }`}
+                className={` px-4 py-2 text-center cursor-pointer text-sm sm:text-base ${
+                  activeTab === tab
+                    ? 'text-white font-bold bg-[#121212] rounded-[14px]'
+                    : 'text-[#aaaaaa]'
+                }`}
               >
                 {tab}
               </div>
@@ -587,10 +644,11 @@ export default function Home() {
 
           {/* Cards with animation */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${animate
-              ? 'translate-y-full opacity-0'
-              : 'translate-y-0 opacity-100'
-              }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${
+              animate
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
           >
             {tabData[activeTab].map((card, index) => (
               <div
@@ -638,10 +696,11 @@ export default function Home() {
 
           {/* Cards with animation */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${animate
-              ? 'translate-y-full opacity-0'
-              : 'translate-y-0 opacity-100'
-              }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transform transition-all duration-500 ${
+              animate
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
           >
             {processData.map((card, index) => (
               <div
@@ -660,6 +719,82 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/** Section 5 - clients */}
+      <div
+        // ref={designPartnerRef}
+        className="client-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-between items-center font-urbanist gap-8 bg-[#030303] text-white"
+      >
+        <div className="header-container w-full flex flex-col items-center justify-between gap-4 mb-8">
+          <div className="text-center font-urbanist px-4 text:xl sm:text-2xl">
+            Clients
+          </div>
+          <div className="text-3xl xs:text-4xl sm:text-7xl font-urbanist text-center py-1 max-w-2xl">
+            Our Clients
+            {/* Our Design Partners help you with {' '}
+            <span className="font-instrumentSerif italic tracking-tighter font-thin">
+              world-class
+            </span>{' '}
+            UI/UX */}
+          </div>
+          <div>
+            {/* <div
+              className="flex flex-row cursor-pointer"
+              onClick={() => window.open('https://thedesigntrip.com', '_blank')}
+            >
+              <Image
+                src={'/images/TheDesignTrip_Logo.png'}
+                alt="Design Partner"
+                width={150}
+                height={150}
+              />
+            </div> */}
+          </div>
+          <div className="relative inline-flex font-urbanist text-[#aaaaaa] text:xl sm:text-2xl max-w-xl lg:font-medium text-center mt-4 ">
+            We transform your ideas into world-class products
+          </div>
+        </div>
+        <div className="details-container flex flex-col justify-between items-center sm:flex-1 gap-8 ">
+          {/* Tabs */}
+
+          {/* Cards with animation - Todo: Will be replaced by logo and The Design Trip */}
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-24 gap-y-12 transform transition-all duration-500 ${
+              animate
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
+          >
+            {clientLogos.map((logo, index) => (
+              <div key={index}>
+                <Image
+                  src={logo.logo_url}
+                  alt={logo.title}
+                  width={logo.width}
+                  height={logo.height}
+                />
+              </div>
+            ))}
+            {/* {designPartnerData.map((card, index) => (
+              <div
+                key={index}
+                className="card max-w-xs min-h-[220px]  bg-[#121212] p-4 rounded-lg shadow-lg flex flex-col justify-between items-center gap-4 text-center"
+              >
+                <div className={`logo w-16 h-16`}>
+                  <Lottie
+                    className={`w-full h-full bg-none`}
+                    animationData={card.icon}
+                  />
+                </div>
+                <h2 className="font-bold text-lg mt-4">{card.title}</h2>
+                <p className="text-[#aaaaaa] text-sm sm:text-base flex-1 mt-4">
+                  {card.description}
+                </p>
+              </div>
+            ))} */}
           </div>
         </div>
       </div>
@@ -703,10 +838,11 @@ export default function Home() {
 
           {/* Cards with animation - Todo: Will be replaced by logo and The Design Trip */}
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-24 gap-y-12 transform transition-all duration-500 ${animate
-              ? 'translate-y-full opacity-0'
-              : 'translate-y-0 opacity-100'
-              }`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-24 gap-y-12 transform transition-all duration-500 ${
+              animate
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
           >
             {designPartnerClientLogos.map((logo, index) => (
               <div key={index}>
@@ -739,7 +875,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/** Section 5 - details of faqs */}
+      {/** Section 6 - details of faqs */}
       <div
         ref={faqsRef}
         className="faq-container p-8 sm:p-16 relative min-w-full min-h-screen flex flex-col justify-center items-center font-urbanist gap-8 bg-[#030303] text-white"
